@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>创业板反弹概率预测方案 · 2026-10</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f7f5f1;color:#17181a;font:16px/1.75 -apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#0b6e6e;text-decoration:none;border-bottom:1px solid rgba(11,110,110,.28)}
+a:hover{border-bottom-color:#0b6e6e}
+.wrap{display:flex;max-width:1240px;margin:0 auto;gap:46px;padding:0 28px}
+#toc{position:sticky;top:0;align-self:flex-start;width:206px;flex:0 0 206px;height:100vh;overflow:auto;padding:34px 0 40px;font-size:13.5px}
+#toc .tt{font-size:11px;letter-spacing:.14em;color:#6f6a61;margin-bottom:14px;text-transform:uppercase}
+#toc a{display:block;color:#5c5750;border:0;padding:5px 0 5px 11px;border-left:2px solid #d9d4cb;line-height:1.45}
+#toc a.on{color:#17181a;border-left-color:#0b6e6e;font-weight:600}
+#toc a:hover{color:#0b6e6e}
+main{flex:1 1 auto;min-width:0;padding:0 0 120px}
+#bar{position:fixed;top:0;left:0;height:2px;background:#0b6e6e;width:0;z-index:99}
+.cover{min-height:96vh;display:flex;flex-direction:column;justify-content:center;border-bottom:1px solid #d9d4cb;padding:60px 0 48px}
+.kicker{font-size:12px;letter-spacing:.2em;color:#b4462f;margin-bottom:22px}
+h1{font-size:clamp(30px,4.4vw,50px);line-height:1.16;margin:0 0 20px;letter-spacing:-.02em;font-weight:700}
+.sub{font-size:clamp(16px,1.6vw,20px);color:#4a453f;line-height:1.7;max-width:44em;margin:0 0 34px}
+.meta{display:flex;flex-wrap:wrap;gap:26px;font-size:13px;color:#6f6a61;border-top:1px solid #d9d4cb;padding-top:20px}
+.meta b{color:#17181a;font-weight:600;display:block;font-size:15px;font-variant-numeric:tabular-nums}
+h2{font-size:24px;margin:64px 0 6px;letter-spacing:-.01em;font-weight:700}
+h2 .num{font-size:12px;letter-spacing:.16em;color:#b4462f;display:block;margin-bottom:8px;font-weight:600}
+h3{font-size:16.5px;margin:32px 0 8px;font-weight:650}
+p{margin:13px 0}
+.lead{font-size:17.5px;color:#332f2a;line-height:1.8}
+hr.sec{border:0;border-top:1px solid #d9d4cb;margin:0}
+.verdict{background:#fff;border:1px solid #d9d4cb;border-left:3px solid #b4462f;padding:22px 26px;margin:28px 0;border-radius:2px}
+.verdict .h{font-size:11px;letter-spacing:.16em;color:#b4462f;margin-bottom:10px;font-weight:600}
+.verdict p{margin:8px 0}
+.note{background:rgba(11,110,110,.055);border:1px solid rgba(11,110,110,.18);padding:18px 22px;border-radius:2px;margin:24px 0;font-size:15px}
+.note .h{font-size:11px;letter-spacing:.16em;color:#0b6e6e;margin-bottom:8px;font-weight:600}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.08em;color:#6f6a61;font-weight:600;border-bottom:1.5px solid #c9c3b9;padding:8px 10px 8px 0;white-space:nowrap}
+td{padding:9px 10px 9px 0;border-bottom:1px solid #e6e1d8;vertical-align:top;font-variant-numeric:tabular-nums}
+.num{text-align:right;white-space:nowrap}
+.ctr{text-align:center}
+tr.hi td{background:rgba(180,70,47,.06)}
+.neg{color:#b4462f}
+.chart{width:100%;height:auto;display:block;margin:10px 0 4px;overflow:visible}
+.chart .ax{font-size:11px;fill:#6f6a61;font-family:inherit}
+.chart .lbl{font-size:12.5px;fill:#3a3630;font-family:inherit}
+.chart .pt{font-size:11.5px;fill:#3a3630;font-family:inherit}
+.chart .pt.strong{font-weight:700;fill:#17181a}
+.chart .pt.rust{fill:#b4462f}
+.chart .pt.halo{paint-order:stroke;stroke:#f7f5f1;stroke-width:3.6px;stroke-linejoin:round}
+.chart .teal{fill:#0b6e6e}
+.chart .n{fill:#6f6a61}
+figcaption{font-size:12.5px;color:#6f6a61;margin:2px 0 26px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.card{border:1px solid #d9d4cb;background:#fff;padding:18px 20px;border-radius:2px}
+.card .t{font-size:13px;font-weight:650;margin-bottom:6px}
+.card .d{font-size:13.5px;color:#4a453f;line-height:1.65}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:20px 0}
+ol.steps>li{counter-increment:s;position:relative;padding:16px 0 16px 46px;border-bottom:1px solid #e6e1d8}
+ol.steps>li::before{content:counter(s);position:absolute;left:0;top:16px;width:26px;height:26px;border:1px solid #0b6e6e;color:#0b6e6e;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
+ol.steps .t{font-weight:650;margin-bottom:4px}
+ol.steps .d{color:#4a453f;font-size:14.5px}
+ul.tight{margin:10px 0;padding-left:20px}
+ul.tight li{margin:7px 0}
+.q{border:1px solid #d9d4cb;border-radius:2px;margin:14px 0;background:#fff}
+.q .h{background:#efece5;padding:10px 16px;font-size:13.5px;font-weight:650;border-bottom:1px solid #d9d4cb}
+.q .b{padding:12px 16px;font-size:14px;color:#3a3630}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:2px;letter-spacing:.04em;margin-left:6px;vertical-align:1px}
+.tag.ok{background:rgba(11,110,110,.12);color:#0b6e6e}
+.tag.no{background:rgba(180,70,47,.12);color:#b4462f}
+.tag.warn{background:rgba(166,124,31,.14);color:#7d5c14}
+footer{border-top:1px solid #d9d4cb;padding:30px 0 60px;font-size:12.5px;color:#6f6a61;line-height:1.7}
+@media (max-width:900px){
+ .wrap{flex-direction:column;padding:0 18px;gap:0}
+ #toc{position:static;width:100%;flex:none;height:auto;padding:20px 0;border-bottom:1px solid #d9d4cb}
+ #toc a{display:inline-block;border-left:0;border-bottom:2px solid transparent;padding:3px 10px 3px 0}
+ #toc a.on{border-bottom-color:#0b6e6e}
+ .cover{min-height:auto;padding:40px 0 30px}
+ .grid2{grid-template-columns:1fr}
+ table{font-size:12.5px}
+ h2{margin-top:44px}
+}
+@media print{
+ #toc,#bar{display:none}
+ body{background:#fff;font-size:10.5pt}
+ .wrap{display:block;max-width:none;padding:0}
+ main{padding:0}
+ .cover{min-height:auto;page-break-after:always}
+ h2{page-break-after:avoid;margin-top:22pt}
+ table,.chart,.verdict,.note,.card{page-break-inside:avoid}
+ @page{size:A4;margin:16mm 14mm}
+}
+</style></head>
+<body><div id="bar"></div>
+<div class="wrap">
+<nav id="toc"><div class="tt">目录</div><a href="#s1">01 你的处境</a><a href="#s2">02 为什么这是弱信号</a><a href="#s3">03 方案四层</a><a href="#s4">04 数据与口径</a><a href="#s5">05 交付物</a><a href="#s6">06 障碍与风险</a><a href="#s7">07 需要你拍板</a></nav>
+<main>
+
+<header class="cover">
+  <div class="kicker">方 案 · 待 你 确 认 后 执 行</div>
+  <h1>创业板反弹概率要怎么测<br>——以及为什么答案只能是区间</h1>
+  <p class="sub">你说“跌了很多、感觉要见底”。这个感觉有数据支撑：创业板指已连跌 6 周、自 6 月高点回撤 42.4%，20 日跌幅位居 16 年历史的第 0.6 百分位。但“概率”这个词，在这么极端的条件下，历史只留给我们 1 到 3 个可比样本。</p>
+  <div class="meta">
+    <div><b>399006</b>创业板指</div>
+    <div><b>2010-06-02 → 2026-10-29</b>样本区间</div>
+    <div><b>3,983</b>交易日</div>
+    <div><b>2,517.59</b>最新收盘</div>
+    <div><b>双源互证</b>腾讯 × 新浪，重叠 1,023 日零差异</div>
+  </div>
+</header>
+
+<section id="s0">
+<h2><span class="num">结 论 先 行</span>我能给你什么，给不了什么</h2>
+<p class="lead">能给：一个带置信区间、带失效条件、可回测的概率结构。给不了：一个“底部概率 85%”式的确定数字——不是数据不够，是样本不够，这是数学约束而不是努力问题。</p>
+
+<div class="verdict">
+<div class="h">侦 察 级 初 判（非最终结论）</div>
+<p>按“20 个交易日内、自当前收盘反弹 ≥5%”这个口径，历史基准率是 <b>42.2%</b>；把条件收紧到“接近你现在的状态”（连跌 3–4 周且 60 日跌幅 ≥12%），历史胜率升到 <b>65%–75%</b>，样本量 n=8–17，95% 置信区间宽达 <b>41%–93%</b>。</p>
+<p><b>这个区间把基准率完整包含在内。</b>换句话说：以现有样本，我无法证明“跌多了”比“什么都不知道”更有用——它可能真有用，但证据强度不够把噪音排除掉。</p>
+<p>同时，那些条件样本在反弹前平均还要再跌 <b>3%–5%</b>；而“连跌 6 周”这个精确条件，在 16 年里只出现过 <b>1 次</b>（不含当前这次——它还没有后续 20 日数据）。</p>
+</div>
+<p>这正是《信号与噪音》里最实用的一条：<b>当信号的信噪比低于某个阈值，诚实的选择是报出区间、标注不确定性、并预先写下什么情况会推翻结论</b>，而不是把噪音修饰成小数点后两位的精度。所以下面这份方案的重点，不是“我算出多少”，而是“我怎么保证算出来的东西不是自我欺骗”。</p>
+</section>
+
+<hr class="sec">
+<section id="s1">
+<h2><span class="num">0 1</span>你的处境：比“跌了几周”更极端</h2>
+<p>先把话说准。你的直觉不是错觉，实际数据比你的描述更严重：</p>
+<table>
+<thead><tr><th>指标</th><th class="num">数值</th><th class="num">历史分位</th><th>口径</th></tr></thead>
+<tbody>
+<tr class="hi"><td>连续下跌周数</td><td class="num neg">6 周</td><td class="num">—</td><td>周线收盘，2026-09-25 → 10-30</td></tr>
+<tr class="hi"><td>该段累计跌幅</td><td class="num neg">−25.35%</td><td class="num">—</td><td>自 2026-09-18 收盘（下跌前最后一周）算起</td></tr>
+<tr><td>近 20 日涨跌</td><td class="num neg">−25.51%</td><td class="num">0.6%</td><td>位处历史最极端 1% 区间</td></tr>
+<tr><td>近 60 日涨跌</td><td class="num neg">−25.49%</td><td class="num">1.4%</td><td>—</td></tr>
+<tr><td>近 120 日涨跌</td><td class="num neg">−31.53%</td><td class="num">0.8%</td><td>—</td></tr>
+<tr><td>自历史最高回撤</td><td class="num neg">−42.42%</td><td class="num">—</td><td>高点 4,371.99（2026-06-25）</td></tr>
+<tr><td>20 日实现波动率</td><td class="num">37.0%</td><td class="num">83.1%</td><td>年化，情绪处于高波动状态</td></tr>
+</tbody></table>
+<svg viewBox="0 0 860 320" class="chart" role="img" aria-label="创业板指周线走势 2023-2026">
+<defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#0b6e6e" stop-opacity="0.22"/><stop offset="100%" stop-color="#0b6e6e" stop-opacity="0.02"/>
+</linearGradient></defs>
+<line x1="58" y1="280.0" x2="838" y2="280.0" stroke="#d9d4cb" stroke-width="1"/><text x="50" y="284.0" text-anchor="end" class="ax">1,474</text><line x1="58" y1="216.5" x2="838" y2="216.5" stroke="#d9d4cb" stroke-width="1"/><text x="50" y="220.5" text-anchor="end" class="ax">2,200</text><line x1="58" y1="153.0" x2="838" y2="153.0" stroke="#d9d4cb" stroke-width="1"/><text x="50" y="157.0" text-anchor="end" class="ax">2,927</text><line x1="58" y1="89.5" x2="838" y2="89.5" stroke="#d9d4cb" stroke-width="1"/><text x="50" y="93.5" text-anchor="end" class="ax">3,653</text><line x1="58" y1="26.0" x2="838" y2="26.0" stroke="#d9d4cb" stroke-width="1"/><text x="50" y="30.0" text-anchor="end" class="ax">4,380</text>
+<polygon points="58.0,280.0 58.0,197.1 62.0,190.9 66.0,182.8 70.0,183.3 74.0,186.4 78.0,194.7 82.0,196.5 86.0,197.1 90.0,201.6 94.0,208.3 98.0,201.6 102.0,199.1 106.0,194.9 110.0,196.6 114.0,204.2 118.0,205.6 122.0,210.6 126.0,211.9 130.0,209.7 134.0,214.0 138.0,213.6 142.0,221.5 146.0,210.4 150.0,215.5 154.0,215.2 158.0,219.2 162.0,214.4 166.0,219.8 170.0,214.8 174.0,211.0 178.0,217.7 182.0,223.6 186.0,230.5 190.0,225.2 194.0,229.7 198.0,233.8 202.0,232.8 206.0,233.7 210.0,234.3 214.0,243.0 218.0,240.1 222.0,236.8 226.0,233.5 230.0,235.2 234.0,239.4 238.0,240.5 242.0,243.4 246.0,247.2 250.0,249.2 254.0,243.5 258.0,253.6 262.0,254.9 266.0,258.9 270.0,261.8 274.0,273.3 278.0,257.9 282.0,255.1 286.0,249.4 290.0,250.8 294.0,244.1 298.0,245.4 302.0,249.9 306.0,248.0 310.0,254.7 314.0,255.3 318.0,249.4 322.0,246.4 326.0,244.7 330.0,245.8 334.0,249.9 338.0,251.0 342.0,253.1 346.0,252.2 350.0,255.3 354.0,261.7 358.0,264.1 362.0,261.7 366.0,258.0 370.0,263.8 374.0,265.6 378.0,269.3 382.0,269.7 386.0,273.6 390.0,270.7 394.0,274.4 398.0,274.6 402.0,274.5 406.0,244.0 410.0,218.7 414.0,225.2 418.0,217.0 422.0,213.1 426.0,223.2 430.0,205.9 434.0,212.7 438.0,218.7 442.0,214.4 446.0,210.7 450.0,213.4 454.0,215.7 458.0,216.1 462.0,232.6 466.0,236.2 470.0,228.1 474.0,223.4 478.0,228.4 482.0,218.8 486.0,215.2 490.0,209.4 494.0,219.1 498.0,216.1 502.0,214.2 506.0,220.7 510.0,222.8 514.0,228.3 518.0,240.4 522.0,241.5 526.0,238.6 530.0,238.5 534.0,233.0 538.0,230.6 542.0,232.1 546.0,234.6 550.0,230.6 554.0,230.2 558.0,233.1 562.0,223.1 566.0,220.4 570.0,215.9 574.0,209.8 578.0,204.3 582.0,205.8 586.0,204.8 590.0,187.3 594.0,174.4 598.0,156.2 602.0,150.3 606.0,144.8 610.0,138.7 614.0,133.4 618.0,125.8 622.0,136.7 626.0,152.3 630.0,131.6 634.0,130.2 638.0,128.4 642.0,136.9 646.0,153.6 650.0,142.0 654.0,137.1 658.0,129.6 662.0,135.9 666.0,125.3 670.0,128.9 674.0,118.0 678.0,115.1 682.0,116.1 686.0,116.3 690.0,125.9 694.0,122.5 698.0,119.5 702.0,126.6 706.0,119.5 710.0,115.8 714.0,120.7 718.0,133.5 722.0,107.4 726.0,87.3 730.0,88.2 734.0,87.4 738.0,77.0 742.0,65.4 746.0,64.6 750.0,55.9 754.0,62.9 758.0,74.0 762.0,37.1 766.0,42.2 770.0,57.5 774.0,73.0 778.0,109.1 782.0,104.6 786.0,116.5 790.0,97.4 794.0,91.9 798.0,98.9 802.0,109.5 806.0,121.6 810.0,118.5 814.0,114.0 818.0,121.4 822.0,134.8 826.0,142.8 830.0,166.5 834.0,174.2 838.0,188.8 838.0,280.0" fill="url(#ga)"/>
+<polyline points="58.0,197.1 62.0,190.9 66.0,182.8 70.0,183.3 74.0,186.4 78.0,194.7 82.0,196.5 86.0,197.1 90.0,201.6 94.0,208.3 98.0,201.6 102.0,199.1 106.0,194.9 110.0,196.6 114.0,204.2 118.0,205.6 122.0,210.6 126.0,211.9 130.0,209.7 134.0,214.0 138.0,213.6 142.0,221.5 146.0,210.4 150.0,215.5 154.0,215.2 158.0,219.2 162.0,214.4 166.0,219.8 170.0,214.8 174.0,211.0 178.0,217.7 182.0,223.6 186.0,230.5 190.0,225.2 194.0,229.7 198.0,233.8 202.0,232.8 206.0,233.7 210.0,234.3 214.0,243.0 218.0,240.1 222.0,236.8 226.0,233.5 230.0,235.2 234.0,239.4 238.0,240.5 242.0,243.4 246.0,247.2 250.0,249.2 254.0,243.5 258.0,253.6 262.0,254.9 266.0,258.9 270.0,261.8 274.0,273.3 278.0,257.9 282.0,255.1 286.0,249.4 290.0,250.8 294.0,244.1 298.0,245.4 302.0,249.9 306.0,248.0 310.0,254.7 314.0,255.3 318.0,249.4 322.0,246.4 326.0,244.7 330.0,245.8 334.0,249.9 338.0,251.0 342.0,253.1 346.0,252.2 350.0,255.3 354.0,261.7 358.0,264.1 362.0,261.7 366.0,258.0 370.0,263.8 374.0,265.6 378.0,269.3 382.0,269.7 386.0,273.6 390.0,270.7 394.0,274.4 398.0,274.6 402.0,274.5 406.0,244.0 410.0,218.7 414.0,225.2 418.0,217.0 422.0,213.1 426.0,223.2 430.0,205.9 434.0,212.7 438.0,218.7 442.0,214.4 446.0,210.7 450.0,213.4 454.0,215.7 458.0,216.1 462.0,232.6 466.0,236.2 470.0,228.1 474.0,223.4 478.0,228.4 482.0,218.8 486.0,215.2 490.0,209.4 494.0,219.1 498.0,216.1 502.0,214.2 506.0,220.7 510.0,222.8 514.0,228.3 518.0,240.4 522.0,241.5 526.0,238.6 530.0,238.5 534.0,233.0 538.0,230.6 542.0,232.1 546.0,234.6 550.0,230.6 554.0,230.2 558.0,233.1 562.0,223.1 566.0,220.4 570.0,215.9 574.0,209.8 578.0,204.3 582.0,205.8 586.0,204.8 590.0,187.3 594.0,174.4 598.0,156.2 602.0,150.3 606.0,144.8 610.0,138.7 614.0,133.4 618.0,125.8 622.0,136.7 626.0,152.3 630.0,131.6 634.0,130.2 638.0,128.4 642.0,136.9 646.0,153.6 650.0,142.0 654.0,137.1 658.0,129.6 662.0,135.9 666.0,125.3 670.0,128.9 674.0,118.0 678.0,115.1 682.0,116.1 686.0,116.3 690.0,125.9 694.0,122.5 698.0,119.5 702.0,126.6 706.0,119.5 710.0,115.8 714.0,120.7 718.0,133.5 722.0,107.4 726.0,87.3 730.0,88.2 734.0,87.4 738.0,77.0 742.0,65.4 746.0,64.6 750.0,55.9 754.0,62.9 758.0,74.0 762.0,37.1 766.0,42.2 770.0,57.5 774.0,73.0 778.0,109.1 782.0,104.6 786.0,116.5 790.0,97.4 794.0,91.9 798.0,98.9 802.0,109.5 806.0,121.6 810.0,118.5 814.0,114.0 818.0,121.4 822.0,134.8 826.0,142.8 830.0,166.5 834.0,174.2 838.0,188.8" fill="none" stroke="#0b6e6e" stroke-width="1.8" stroke-linejoin="round"/>
+<line x1="762.0" y1="37.1" x2="838.0" y2="188.8" stroke="#b4462f" stroke-width="1.1" stroke-dasharray="4 4"/>
+<circle cx="762.0" cy="37.1" r="3.4" fill="#b4462f"/>
+<circle cx="838.0" cy="188.8" r="4.4" fill="#b4462f" stroke="#f7f5f1" stroke-width="1.6"/>
+<text x="809.0" y="117.0" class="pt rust halo">-40.8%</text>
+<text x="58.0" y="300.0" text-anchor="middle" class="ax">23/01</text><text x="170.0" y="300.0" text-anchor="middle" class="ax">23/07</text><text x="282.0" y="300.0" text-anchor="middle" class="ax">24/02</text><text x="394.0" y="300.0" text-anchor="middle" class="ax">24/09</text><text x="506.0" y="300.0" text-anchor="middle" class="ax">25/03</text><text x="618.0" y="300.0" text-anchor="middle" class="ax">25/10</text><text x="730.0" y="300.0" text-anchor="middle" class="ax">26/04</text>
+</svg>
+<figcaption>创业板指周线（2023-01 → 2026-10-29）。6 月高点 4,371.99 至今回撤 42.4%，下跌集中且斜率陡——这更像“高位泡沫破裂”的形态，而不是普通的技术性回调。</figcaption>
+
+<h3>它在历史上排第几</h3>
+<p>把 16 年的峰谷全部算一遍，你这轮的位置是这样的：</p>
+<table>
+<thead><tr><th>排名</th><th>峰值</th><th>谷底</th><th class="num">点位</th><th class="num">深度</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>2015-06-03</td><td>2018-10-18</td><td class="num">3,982 → 1,205</td><td class="num neg">−69.7%</td></tr>
+<tr><td>2</td><td>2010-12-17</td><td>2012-12-03</td><td class="num">1,233 → 594</td><td class="num neg">−51.9%</td></tr>
+<tr class="hi"><td>3</td><td>2026-06-25</td><td>2026-10-29</td><td class="num">4,372 → 2,518</td><td class="num neg">−42.4%</td></tr>
+<tr><td>4</td><td>2010-06-11</td><td>2010-07-05</td><td class="num">1,122 → 862</td><td class="num neg">−23.2%</td></tr>
+</tbody></table>
+<p><b>这就是本项目最硬的一个约束</b>：比今天更深的回撤，历史上只有两段。也就是说，当你想问“像现在这种跌法之后会怎样”，可供类比的历史样本实质上只有 <b>2 段行情</b>——而它们的驱动因素（2015 年杠杆牛市破裂叠加去杠杆、2011–2012 年产能过剩与流动性紧缩）与今天未必同构。第 4 名往后的跌幅都只有当下的一半，形态上已不太可比。</p>
+<p>这个形态还有一个含义：<b>你的问题不是“跌多了会不会弹”，而是“泡沫破裂到 42% 之后会不会弹”。</b>两者对应的样本集完全不同，所以方案里必须做“同构性识别”，而不能笼统地数“历史上跌过多少次”。</p>
+</section>
+
+<hr class="sec">
+<section id="s2">
+<h2><span class="num">0 2</span>为什么“跌多了会反弹”在统计上是弱信号</h2>
+<p>我把你的判断直接放进了历史数据里检验。下面这张图是本方案存在的理由：</p>
+<svg viewBox="0 0 860 360" class="chart" role="img" aria-label="条件概率与基准率对比"><line x1="250.0" y1="24" x2="250.0" y2="306" stroke="#d9d4cb" stroke-width="1"/>
+<text x="250.0" y="326" text-anchor="middle" class="ax">0%</text>
+<line x1="373.5" y1="24" x2="373.5" y2="306" stroke="#d9d4cb" stroke-width="1"/>
+<text x="373.5" y="326" text-anchor="middle" class="ax">25%</text>
+<line x1="497.0" y1="24" x2="497.0" y2="306" stroke="#d9d4cb" stroke-width="1"/>
+<text x="497.0" y="326" text-anchor="middle" class="ax">50%</text>
+<line x1="620.5" y1="24" x2="620.5" y2="306" stroke="#d9d4cb" stroke-width="1"/>
+<text x="620.5" y="326" text-anchor="middle" class="ax">75%</text>
+<line x1="744.0" y1="24" x2="744.0" y2="306" stroke="#d9d4cb" stroke-width="1"/>
+<text x="744.0" y="326" text-anchor="middle" class="ax">100%</text>
+<rect x="451.1" y="24" width="15.3" height="282" fill="#0b6e6e" opacity="0.10"/>
+<line x1="458.5" y1="24" x2="458.5" y2="306" stroke="#0b6e6e" stroke-width="1.4" stroke-dasharray="5 3"/>
+<text x="458.5" y="17" text-anchor="middle" class="ax teal">基准 42.2%</text>
+<text x="238" y="61.6" text-anchor="end" class="lbl">无条件基准（任意一天起算）</text>
+<line x1="451.1" y1="57.6" x2="466.4" y2="57.6" stroke="#0b6e6e" stroke-width="1.6" opacity="0.55"/>
+<line x1="451.1" y1="51.6" x2="451.1" y2="63.6" stroke="#0b6e6e" stroke-width="1.6" opacity="0.55"/>
+<line x1="466.4" y1="51.6" x2="466.4" y2="63.6" stroke="#0b6e6e" stroke-width="1.6" opacity="0.55"/>
+<circle cx="458.5" cy="57.6" r="5" fill="#0b6e6e" stroke="#0b6e6e" stroke-width="1.7"/>
+<text x="754" y="61.6" class="ax n">n=3963</text>
+<text x="238" y="116.8" text-anchor="end" class="lbl">连跌3周 + 60日跌幅≥12%</text>
+<line x1="454.0" y1="112.8" x2="658.5" y2="112.8" stroke="#b4462f" stroke-width="1.6" opacity="0.55"/>
+<line x1="454.0" y1="106.8" x2="454.0" y2="118.8" stroke="#b4462f" stroke-width="1.6" opacity="0.55"/>
+<line x1="658.5" y1="106.8" x2="658.5" y2="118.8" stroke="#b4462f" stroke-width="1.6" opacity="0.55"/>
+<circle cx="569.6" cy="112.8" r="5" fill="#b4462f" stroke="#b4462f" stroke-width="1.7"/>
+<text x="754" y="116.8" class="ax n">n=17</text>
+<text x="238" y="172.0" text-anchor="end" class="lbl">连跌4周 + 60日跌幅≥12%</text>
+<line x1="452.0" y1="168.0" x2="708.9" y2="168.0" stroke="#b4462f" stroke-width="1.6" opacity="0.55"/>
+<line x1="452.0" y1="162.0" x2="452.0" y2="174.0" stroke="#b4462f" stroke-width="1.6" opacity="0.55"/>
+<line x1="708.9" y1="162.0" x2="708.9" y2="174.0" stroke="#b4462f" stroke-width="1.6" opacity="0.55"/>
+<circle cx="620.5" cy="168.0" r="5" fill="#b4462f" stroke="#b4462f" stroke-width="1.7"/>
+<text x="754" y="172.0" class="ax n">n=8</text>
+<text x="238" y="227.2" text-anchor="end" class="lbl">连跌5周 + 60日跌幅≥12%</text>
+<line x1="364.1" y1="223.2" x2="685.7" y2="223.2" stroke="#b9b2a6" stroke-width="1.6" opacity="0.55"/>
+<line x1="364.1" y1="217.2" x2="364.1" y2="229.2" stroke="#b9b2a6" stroke-width="1.6" opacity="0.55"/>
+<line x1="685.7" y1="217.2" x2="685.7" y2="229.2" stroke="#b9b2a6" stroke-width="1.6" opacity="0.55"/>
+<circle cx="546.4" cy="223.2" r="5" fill="none" stroke="#b9b2a6" stroke-width="1.7"/>
+<text x="754" y="227.2" class="ax n">n=5</text>
+<text x="238" y="282.4" text-anchor="end" class="lbl">连跌6周 + 60日跌幅≥15%</text>
+<line x1="352.3" y1="278.4" x2="744.0" y2="278.4" stroke="#b9b2a6" stroke-width="1.6" opacity="0.55"/>
+<line x1="352.3" y1="272.4" x2="352.3" y2="284.4" stroke="#b9b2a6" stroke-width="1.6" opacity="0.55"/>
+<line x1="744.0" y1="272.4" x2="744.0" y2="284.4" stroke="#b9b2a6" stroke-width="1.6" opacity="0.55"/>
+<circle cx="744.0" cy="278.4" r="5" fill="none" stroke="#b9b2a6" stroke-width="1.7"/>
+<text x="754" y="282.4" class="ax n">n=1</text>
+<text x="250" y="352" class="ax">区间为 Wilson 95% 置信区间；空心点为 n≤5，不可据此下判断</text></svg>
+<figcaption>口径：以检测日为基准，未来 20 个交易日内最高收盘价相对基准日的涨幅 ≥5% 记为“反弹”。条件样本采用 60 个交易日冷却期，避免重叠事件重复计数。区间为 Wilson 95% 置信区间。</figcaption>
+
+<h3>三个必须直面的问题</h3>
+<p><b>一、置信区间全部覆盖基准率。</b>连跌 3 周的条件胜率 64.7%，看起来比基准 42.2% 高出一大截，但它的 95% 区间是 [41.3%, 82.7%]——下限刚好压在基准率上。n=17 时，这个“提升”完全可能是抽样误差。<b>把条件收得越紧（越接近你现在的状态），样本越少，区间越宽，结论越不可靠。</b>这不是巧合，是统计学的反比关系：精确描述当下的代价，是失去历史证据。</p>
+<p><b>二、n=1 会制造 100% 的幻觉。</b>表里“连跌 6 周 + 60 日跌幅 ≥15%”给出 100% 的胜率，因为 16 年里符合这个条件的样本只有 1 个。这个 100% 的信息量约等于零，但它在任何一张 PPT 上都极具说服力。这类数字是本项目最需要防的东西——我会用贝叶斯收缩把它们拉回基准率附近，并在报告里显式标注有效样本量。</p>
+<p><b>三、反弹不等于赚钱。</b>条件样本在 20 日窗口内平均先跌 3%–5%，最差的一例先跌 14%。一个 60% 的反弹概率配一次 15% 的浮亏，绝大多数人的实际结果是“在反弹前被震出去”。所以概率必须和路径风险一起报，单独报概率是有害的。</p>
+
+<div class="note">
+<div class="h">一 个 反 直 觉 的 细 节</div>
+如果把“反弹”的门槛从 5% 提到 10%，条件概率从 64.7% 掉到 23.5%，而无条件基准率是 20.0%——<b>几乎完全贴合</b>。这说明历史数据里“跌多了之后大涨”的能力很弱，主要贡献的是“跌多了之后小反弹”的均值回归。<b>你想要的是哪一种反弹，直接决定答案的量级。</b>这也解释了这个领域最常见的误用：先有一个想听的答案，再去挑一个能凑出这个答案的门槛。
+</div>
+</section>
+
+<hr class="sec">
+<section id="s3">
+<h2><span class="num">0 3</span>方案：四层结构，逐层可证伪</h2>
+<p>设计原则是“先定规则，后看结果”。所有特征、门槛、验证方式在执行前写入预注册清单，执行后不允许回头调参——一旦允许，任何数据都能被调出一个漂亮结论，这就是过拟合。</p>
+
+<ol class="steps">
+<li>
+<div class="t">L0 · 锁定事件定义（一切的前提）</div>
+<div class="d">“反弹”必须先变成可计算的事件：<b>P(H, Y) = P( 存在 h ∈ (0, H]，使得 max(close[t+1..t+h]) / close[t0] − 1 ≥ Y )</b>。我建议主口径 <b>(H=20 交易日, Y=5%)</b>，辅以 (20, 3%)、(20, 10%)、(60, 10%) 三组做敏感性对照。基准日 t0 = 2026-10-30 收盘（今日盘后）。<br>同时输出三个路径指标：窗口内最大回撤、是否创新低、以及到 H 日的终点收益。没有这三个，概率会被误读成收益预期。</div>
+</li>
+<li>
+<div class="t">L1 · 基准率层：不看任何信号时的答案</div>
+<div class="d">全样本 3,963 个起点，算出无条件基准率与未来收益分布：P(≥3%)=57.1%、P(≥5%)=42.2%、P(≥10%)=20.0%；20 日收益均值 +0.96%、中位 +0.23%、P(收益&gt;0)=51.2%。<br><b>这一层是全案的地基和裁判。</b>后面任何模型如果在样本外打不赢这组数字，就应当直接采用基准率回答，并如实说明“信号无效”。我已经把这个可能性写进方案，它是合法结局，不是失败。</div>
+</li>
+<li>
+<div class="t">L2 · 历史类比层：条件概率 + 贝叶斯收缩</div>
+<div class="d">在 L1 基础上叠加条件：连跌 K 周（K=3..6）、近 M 日跌幅（M=20/60，X=−8%/−12%/−15%/−20%）、回撤深度分档。用 60 日冷却期保证事件不重叠，输出每个格子的 n、胜率、Wilson 区间。<br>关键处理：<b>用 Beta 先验（由 L1 基准率定参）对每个格子的概率做收缩</b>，使 n=1 的格子自动退回基准率附近，而不是输出 100%。同时按年份做子样本稳定性检验，标出 2015、2018、2024-02 三个异常期的贡献占比——如果结论主要由某一个极端年份撑起来，那它就不是规律，是一次事件。</div>
+</li>
+<li>
+<div class="t">L3 · 特征模型层：预注册的 12 个信号</div>
+<div class="d">分四类，每类最多 3 个，避免“广撒网捞显著性”：<br>
+<b>价格/波动</b>：20 日实现波动率分位、距 250 日均线偏离、连跌周数<br>
+<b>量能</b>：成交额 20 日均值分位、缩量比（5日/60日均额）、换手率分位<br>
+<b>估值/杠杆</b>：创业板 PE 分位、两融余额/流通市值、两融环比变化<br>
+<b>宏观状态</b>：10 年期国债收益率变动、政策事件哑变量（降准/降息/汇金增持表态）<br>
+主模型用 <b>logistic 回归</b>（n≈4000，可解释、不易过拟合），梯度提升仅作鲁棒性对照。验证用 <b>walk-forward</b>（滚动训练、只用 t 之前的信息预测 t），报告 Brier 分数与校准曲线，并与 L1 基准率做显著性比较。</div>
+</li>
+<li>
+<div class="t">L4 · 同构性检验与失效条件</div>
+<div class="d">回答“这次像哪一次”：把当前状态（−42% 回撤、高波动、陡斜率、6 周连跌）与历史 4 个主要下跌段的<b>形态向量</b>（回撤深度/速度/波动率/量能萎缩度/估值分位）做距离匹配，取最近的 3 段，单独报它们的后续分布。<br>并预先写下失效条件：若本次下跌由流动性或信用事件驱动（而非情绪与估值修复），则基于历史分位的均值回归统计<b>整体失效</b>——这类情形下历史类比会系统性低估下跌深度。</div>
+</li>
+</ol>
+</section>
+
+<hr class="sec">
+<section id="s4">
+<h2><span class="num">0 4</span>数据与口径：已打通的和卡住的</h2>
+<p>以下是我在这一小时里实测过的，不是估计：</p>
+<table>
+<thead><tr><th>数据</th><th>来源</th><th>状态</th><th>用途</th></tr></thead>
+<tbody>
+<tr><td>创业板指日线全历史</td><td>腾讯 ifzq + 新浪 双源</td><td><span class="tag ok">可用</span>3,983 日，重叠期零差异</td><td>L1/L2 主数据</td></tr>
+<tr><td>深市两融余额日序列</td><td>深交所官方 1837_xxpl</td><td><span class="tag ok">可用</span>4,025 行</td><td>L3 杠杆信号</td></tr>
+<tr><td>深市成交/市值总貌</td><td>深交所官方 1803_sczm</td><td><span class="tag ok">可用</span>需带 txtQueryDate</td><td>L3 量能信号</td></tr>
+<tr><td>创业板指 PE/PB 历史</td><td>巨潮 / 中证指数</td><td><span class="tag warn">需换接口</span>首个试探接口参数报错</td><td>估值分位、同构性</td></tr>
+<tr><td>东方财富行情/资金接口</td><td>push2his.eastmoney.com</td><td><span class="tag no">本机被拒</span>连接被对端关闭</td><td>已用腾讯替代</td></tr>
+<tr><td>北向资金每日净流入</td><td>—</td><td><span class="tag no">已停止披露</span>2024-08 起</td><td>外资信号不可用，只能退化为季度持仓</td></tr>
+</tbody></table>
+<p>口径统一说明：价格用<b>收盘价</b>；“反弹”只用日收盘序列计算，不用盘中最高价（避免用不可交易的瞬时价抬高概率）；所有分位数均在<b>全样本 2010-06 起</b>计算；收益不含分红与费用。</p>
+</section>
+
+<hr class="sec">
+<section id="s5">
+<h2><span class="num">0 5</span>交付物</h2>
+<p>确认后，我会在这个目录下产出（当前该目录已建好，侦察脚本与数据已在其中）：</p>
+<div class="grid2">
+<div class="card"><div class="t">主报告（单文件 HTML）</div><div class="d">离线可开、含封面/目录/图表/打印样式。核心是概率矩阵与它的置信区间，以及“哪一条证据最脆弱”。</div></div>
+<div class="card"><div class="t">概率与情景表（CSV）</div><div class="d">(H,Y) 网格下的概率、区间、样本量、路径风险，可直接进 Excel。</div></div>
+<div class="card"><div class="t">可复现脚本 + 原始数据</div><div class="d">取数、计算、回测三个脚本；数据落盘 CSV 带来源与抓取时间戳。</div></div>
+<div class="card"><div class="t">预注册清单（Markdown）</div><div class="d">执行前写下特征、门槛、验证方式与失效条件，事后不可改。这是防自我欺骗的唯一硬约束。</div></div>
+</div>
+<p style="margin-top:22px">目录当前内容：<br>
+<a href="../data/399006_daily_tencent.csv">data/399006_daily_tencent.csv</a>（3,983 日行情）·
+<a href="../scripts/fetch_399006.py">scripts/fetch_399006.py</a>（取数与双源校验）·
+<a href="../scripts/recon.py">scripts/recon.py</a>（侦察：跌幅、样本量、基准率）</p>
+</section>
+
+<hr class="sec">
+<section id="s6">
+<h2><span class="num">0 6</span>障碍与风险：你需要提前知道的八件事</h2>
+<p>按严重程度排序，前三条是硬约束，无法通过更努力解决。</p>
+<ul class="tight">
+<li><b>1. 精度上限（硬）。</b>你要的那种条件（连跌 6 周 + 大跌 + 高位回撤 42%），在 16 年里只有 1–3 个先例。任何基于它的条件概率，95% 区间都会宽到 ±20 个百分点以上。我能给出“大概率在 45%–65% 之间”，给不出“72.3%”。如果有人给你小数点后一位的底部概率，那是把方法论当装饰。</li>
+<li><b>2. 事件重叠（硬）。</b>3,983 个交易日不等于 3,983 个独立观测。连跌期间相邻两天的信息几乎相同，有效样本可能只有几十个。我已经用 60 日冷却期处理，但这会进一步压缩样本——精度和独立性是互斥的。</li>
+<li><b>3. 定义敏感（硬）。</b>反弹门槛从 5% 改到 10%，答案从 64.7% 变成 23.5%。所以“反弹概率”这个说法在没有锁定 (H, Y) 之前是没有意义的。这也是它最容易被滥用的地方。</li>
+<li><b>4. 结构性变化。</b>2010 年的创业板只有 100 多家公司、无涨跌幅 20% 制度、无注册制。把 2010–2015 的样本与今天同等加权，会系统性扭曲“历史分位”。处理方式：分时段加权 + 2019 年后子样本单独报一套结果（可能与你期望的方向不同）。</li>
+<li><b>5. 数据缺口。</b>东财接口在本机被拒（已实测），北向资金 2024-08 起停止每日披露，创业板单板块 PE 需要换源。这意味着“外资抄底”“估值见底”这两类常见论据，我只能给弱化版本或明确标注不可得。</li>
+<li><b>6. 因果错位。</b>政策底通常先于市场底，“跌多了”只是价格信息，不包含流动性、信用、监管状态。历史上多次出现“跌到目标位还在跌 20%”的尾部（2024 年 2 月即典型）。模型对这类尾部天然迟钝。</li>
+<li><b>7. 我的知识边界。</b>2026 年 6 月以来的这轮下跌，驱动因素不在我的训练数据里。如果 L4 的同构性检验要判断“这次像 2015 还是像 2024-02”，我需要现场检索宏观与政策信息，并对其可靠性单独标注——网上的归因文章质量参差，容易被当成事实。</li>
+<li><b>8. 我不能替你定风险偏好。</b>同一个概率，对满仓和空仓的人含义完全相反，对能扛 40% 回撤和不能扛 15% 回撤的人更是两回事。概率是客观的，仓位是主观的，后者只能你定。</li>
+</ul>
+<div class="note">
+<div class="h">关 于 结 论 可 能 不 好 看</div>
+如果走完 L1–L4，模型在样本外打不赢基准率 42.2%，我会照实写“这套信号无效，可用基准率做粗略参考”。我不会为了给出一个像样的答案而放宽标准。提前说明，免得到时候你觉得我敷衍。
+</div>
+</section>
+
+<hr class="sec">
+<section id="s7">
+<h2><span class="num">0 7</span>需要你拍板四件事</h2>
+<p>这些不定下来，我算了也是白算——换一个参数，结论就换一个样子。</p>
+<div class="q"><div class="h">Q1 反弹怎么定义？</div><div class="b">我建议主口径 <b>20 个交易日内、收盘反弹 ≥5%</b>，另附 3%/10% 与 60 日窗口作敏感性。<br>如果你的真实意图是“能不能回本/能不能解套”，那门槛应该按你的持仓成本设，我们得换一套算法。</div></div>
+<div class="q"><div class="h">Q2 这个概率用来干什么？</div><div class="b">A. 决定现在要不要加仓 → 那我要多做风险层（先跌幅度、分批点位、最大回撤）。<br>B. 验证自己的判断对不对 → 只做 L1–L3 就够，重点是校准与证伪。<br>C. 写成给别人看的东西 → 需要额外做图表规范与免责声明。</div></div>
+<div class="q"><div class="h">Q3 要不要做“这次像哪一次”的同构性分析？</div><div class="b">要做得查宏观、政策、流动性，耗时明显更长，而且归因本身有争议。不做的话，结论只能停留在“历史上类似跌幅之后如何”，会比较干。</div></div>
+<div class="q"><div class="h">Q4 时间预算？</div><div class="b"><b>快速版</b>：L1 + L2 + 区间，半小时级，够你判断“感觉”值不值得下注。<br><b>完整版</b>：加 L3 模型回测与 L4 同构性，需要补齐 PE 数据与政策检索，产出更厚，但精度不会显著提升（受障碍 1 限制）。</div></div>
+<p style="margin-top:24px">你回一句“按你建议的来”也可以，我就用推荐口径（20 日 / 5%，完整版，含同构性）直接开工。</p>
+</section>
+
+<footer>
+<p><b>数据来源</b>：腾讯财经 ifzq.gtimg.cn（日线原始）、新浪财经（重叠期交叉校验，1,023 日收盘差异 &gt;0.05 元的为 0 日）、深圳证券交易所官方接口（两融余额、市场总貌）。<b>数据截止</b>：2026-10-29 收盘（2026-10-30 为当日盘中之前，未纳入）。<b>计算口径</b>：收盘价、前复权指数点位、不含分红与交易费用；分位数基于 2010-06-02 起全样本。</p>
+<p><b>声明</b>：本文档为统计方法方案，所有数字为历史统计结果，<b>不构成投资建议</b>，也不预示未来收益。历史基准率不保证重现，极端行情下统计规律可能整体失效。投资决策及后果由投资者自行承担。</p>
+<p style="margin-top:14px;color:#8b857c">生成于 2026-10-30 · 单文件离线文档 · 图表为内联 SVG，无外部依赖</p>
+</footer>
+
+</main></div>
+<script>
+(function(){
+ var bar=document.getElementById('bar');
+ var links=[].slice.call(document.querySelectorAll('#toc a'));
+ var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+ function onScroll(){
+   var h=document.documentElement;
+   var p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);
+   bar.style.width=(p*100).toFixed(2)+'%';
+   var idx=0;
+   for(var i=0;i<secs.length;i++){
+     if(secs[i]&&secs[i].getBoundingClientRect().top<160) idx=i;
+   }
+   links.forEach(function(a,i){a.classList.toggle('on',i===idx);});
+ }
+ document.addEventListener('scroll',onScroll,{passive:true});
+ onScroll();
+})();
+</script>
+</body></html>

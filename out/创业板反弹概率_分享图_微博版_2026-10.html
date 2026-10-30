@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<title>反弹是真的，见底是例外</title>
+<style>
+html,body{margin:0;padding:0;width:1080px;height:1440px;overflow:hidden}
+body{background:#f7f5f1;color:#17181a;
+ font-family:-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+ -webkit-font-smoothing:antialiased}
+.card{position:relative;width:1080px;height:1440px;box-sizing:border-box;padding:60px 72px}
+.top{display:flex;justify-content:space-between;align-items:baseline;
+ font-size:20px;letter-spacing:.14em;color:#6f6a61}
+.top b{color:#b4462f;font-weight:600;letter-spacing:.14em}
+h1{margin:36px 0 0;font-size:66px;line-height:1.24;font-weight:800;letter-spacing:-.02em}
+h1 .hl{color:#b4462f}
+.sub{margin-top:16px;font-size:20px;line-height:1.6;color:#3a3630}
+.sub b{font-weight:700}
+.sub .tl{color:#0b6e6e} .sub .hl{color:#b4462f}
+.sub .sm{display:block;margin-top:5px;font-size:16px;color:#6f6a61}
+
+.chead{position:absolute;left:72px;right:72px;top:404px;display:flex;justify-content:space-between;
+ align-items:baseline;border-bottom:1px solid #d9d4cb;padding-bottom:11px}
+.chead .cap{font-size:15px;color:#6f6a61}
+.chead .lg{font-size:14px;color:#6f6a61;display:flex;gap:15px;align-items:center}
+.chead .lg i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.chead .lg .d20{background:#0b6e6e} .chead .lg .d60{background:#3a3630}
+.chead .lg .dfc{background:none;border:2.4px solid #0b6e6e;width:8px;height:8px}
+.chead .lg .ln{display:inline-block;width:22px;height:0;border-top:2.6px dashed #b4462f;margin-right:6px;vertical-align:3px}
+
+.chart{position:absolute;left:0;top:0;width:1080px;height:1440px}
+.chart .ax{font:16px/1 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#6f6a61}
+.chart .val{font:600 17px/1 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-variant-numeric:tabular-nums;paint-order:stroke;stroke:#f7f5f1;stroke-width:4px;stroke-linejoin:round}
+.chart .val.t{fill:#0b6e6e} .chart .val.c{fill:#3a3630}
+.chart .ev{font:600 17px/1 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#17181a}
+.chart .ev.cur{fill:#b4462f}
+.chart .evd{font:14px/1 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#6f6a61}
+
+.odds{position:absolute;left:72px;right:72px;top:1192px;display:flex;align-items:baseline;gap:14px}
+.odds .k{font-size:13px;color:#b4462f;font-weight:700;letter-spacing:.18em;padding-right:2px}
+.odds .v{font-size:34px;font-weight:700;color:#0b6e6e;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.odds .r{font-size:14px;color:#6f6a61}
+
+.foot{position:absolute;left:72px;right:72px;bottom:44px;border-top:1px solid #d9d4cb;padding-top:15px}
+.foot p{margin:0 0 5px;font-size:14px;line-height:1.54;color:#6f6a61}
+.foot p:last-child{margin-bottom:0}
+.foot b{color:#3a3630;font-weight:600}
+.foot .disc{color:#8b857c;font-size:12.5px;margin-top:6px}
+</style></head>
+<body>
+<div class="card">
+  <div class="top"><span>创业板指 · 399006</span><b>16 年 · 4 次 · 非预测</b></div>
+  <h1>反弹是真的，<br>见底是<span class="hl">例外</span>。</h1>
+  <div class="sub">
+    4 次跌破 −40%：一个月内 <b class="tl">3 次涨超 19%</b>，3 个月后 <b class="hl">3 次倒亏</b>。
+    <span class="sm">同一批样本，只把结算点从 1 个月挪到 3 个月，结论就反转。</span>
+  </div>
+
+  <div class="chead">
+    <div class="cap">2010–2026 历史统计 · 非预测　纵轴：结算收益　横轴：4 次触发时点</div>
+    <div class="lg">
+      <span><i class="d20"></i>1 个月后</span>
+      <span><i class="d60"></i>3 个月后</span>
+      <span><i class="dfc"></i>历史参考</span>
+      <span><i class="ln"></i>由正转负</span>
+    </div>
+  </div>
+
+  <div class="chart"><svg viewBox="0 0 1080 1440" width="1080" height="1440" xmlns="http://www.w3.org/2000/svg">
+<line x1="124" y1="563.9" x2="996" y2="563.9" stroke="#d9d4cb" stroke-width="1"/>
+<text x="114" y="569.9" text-anchor="end" class="ax">+20%</text>
+<line x1="124" y1="739.7" x2="996" y2="739.7" stroke="#d9d4cb" stroke-width="1"/>
+<text x="114" y="745.7" text-anchor="end" class="ax">+10%</text>
+<line x1="124" y1="915.4" x2="996" y2="915.4" stroke="#17181a" stroke-width="1.6"/>
+<text x="114" y="921.4" text-anchor="end" class="ax">0</text>
+<line x1="124" y1="1091.2" x2="996" y2="1091.2" stroke="#d9d4cb" stroke-width="1"/>
+<text x="114" y="1097.2" text-anchor="end" class="ax">−10%</text>
+<line x1="234.6" y1="1064.7" x2="234.6" y2="1019.9" stroke="#cdc6b9" stroke-width="2" stroke-dasharray="3 4" opacity=".85"/>
+<circle cx="234.6" cy="1064.7" r="8.5" fill="#0b6e6e"/>
+<circle cx="234.6" cy="1019.9" r="8.5" fill="#3a3630"/>
+<text x="217.6" y="1070.7" text-anchor="end" class="val t">-8.5%</text>
+<text x="251.6" y="1025.9" class="val c">-5.9%</text>
+<text x="234.6" y="1134" text-anchor="middle" class="ev">2011-12-27</text>
+<text x="234.6" y="1160" text-anchor="middle" class="evd">熊市末段</text>
+<line x1="403.8" y1="770.3" x2="403.8" y2="1036.3" stroke="#b4462f" stroke-width="2.6" stroke-dasharray="6 5" opacity=".85"/>
+<circle cx="403.8" cy="770.3" r="8.5" fill="#0b6e6e"/>
+<circle cx="403.8" cy="1036.3" r="8.5" fill="#3a3630"/>
+<text x="386.8" y="776.3" text-anchor="end" class="val t">+8.3%</text>
+<text x="420.8" y="1042.3" class="val c">-6.9%</text>
+<text x="403.8" y="1134" text-anchor="middle" class="ev">2015-07-07</text>
+<text x="403.8" y="1160" text-anchor="middle" class="evd">股灾第一波</text>
+<line x1="573.0" y1="678.2" x2="573.0" y2="1042.7" stroke="#b4462f" stroke-width="2.6" stroke-dasharray="6 5" opacity=".85"/>
+<circle cx="573.0" cy="678.2" r="8.5" fill="#0b6e6e"/>
+<circle cx="573.0" cy="1042.7" r="8.5" fill="#3a3630"/>
+<text x="556.0" y="684.2" text-anchor="end" class="val t">+13.5%</text>
+<text x="590.0" y="1048.7" class="val c">-7.2%</text>
+<text x="573.0" y="1134" text-anchor="middle" class="ev">2015-10-21</text>
+<text x="573.0" y="1160" text-anchor="middle" class="evd">反弹途中二次触线</text>
+<line x1="742.2" y1="529.9" x2="742.2" y2="564.0" stroke="#cdc6b9" stroke-width="2" stroke-dasharray="3 4" opacity=".85"/>
+<circle cx="742.2" cy="529.9" r="8.5" fill="#0b6e6e"/>
+<circle cx="742.2" cy="564.0" r="8.5" fill="#3a3630"/>
+<text x="725.2" y="535.9" text-anchor="end" class="val t">+21.9%</text>
+<text x="759.2" y="570.0" class="val c">+20.0%</text>
+<text x="742.2" y="1134" text-anchor="middle" class="ev">2024-02-02</text>
+<text x="742.2" y="1160" text-anchor="middle" class="evd">流动性危机</text>
+<line x1="826.8" y1="466" x2="826.8" y2="1104" stroke="#c9c2b5" stroke-width="1.2" stroke-dasharray="4 5"/>
+<line x1="911.4" y1="724.4" x2="911.4" y2="1028.1" stroke="#b4462f" stroke-width="2.4" stroke-dasharray="6 5" opacity=".5"/>
+<circle cx="911.4" cy="724.4" r="8.5" fill="none" stroke="#0b6e6e" stroke-width="2.8"/>
+<circle cx="911.4" cy="1028.1" r="8.5" fill="none" stroke="#3a3630" stroke-width="2.8"/>
+<text x="894.4" y="730.4" text-anchor="end" class="val t">+10.9%</text>
+<text x="928.4" y="1034.1" class="val c">−6.4%</text>
+<text x="911.4" y="1134" text-anchor="middle" class="ev cur">历史参考</text>
+<text x="911.4" y="1160" text-anchor="middle" class="evd">四次中间水平</text>
+</svg></div>
+
+  <div class="odds">
+    <span class="k">历史参考</span>
+    <span class="v">+10.9%</span>
+    <span class="r">一个月后结算的中间水平 · 4 次里 3 次为正</span>
+  </div>
+
+  <div class="foot">
+    <p><b>口径</b>　跌破 = 收盘价自 250 日最高收盘回撤 −40% 的首次触及日；结算 = 其后第 20 / 60 个交易日的收盘收益。</p>
+    <p><b>本次</b>　空心点为 4 次结算收益的中间水平（中位数），区间 −8.5% ~ +21.9%（1 个月）、−7.2% ~ +20.0%（3 个月）。</p>
+    <p><b>当前</b>　10-22 首破 −40%，10-29 收 2,517.59（−42.4%），20 日后续数据尚未产生。</p>
+    <p class="disc">本图仅整理历史数据，不含预测，不构成投资建议 · 数据：创业板指 2010-06 至 2026-10-29</p>
+  </div>
+</div>
+</body></html>
