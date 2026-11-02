@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """生成《创业板反弹概率（快速版）》单文件 HTML 报告。"""
 import os, json, math
 import numpy as np
@@ -18,14 +18,15 @@ legs, analogs, sim = R["legs"], R["analogs"], R["similarity"]
 def pct(x, d=1, sign=False):
     if x is None:
         return "—"
-    return ("%+.*f%%" if sign else "%.*f%%") % (d, x * 100)
+    s = ("%+.*f%%" if sign else "%.*f%%") % (d, x * 100)
+    return s.replace("-", "−")   # 统一用 U+2212 减号，避免与 ASCII 连字符混排
 
 
 # ---------------------------------------------------------------- 图1 概率
 def chart_prob():
     W, H = 860, 342
     L, Rw, T, B = 268, 118, 34, 58
-    rows = [("无条件基准率（不看任何信号）", base["G2"]["p"], base["G2"]["ci"], 3963, "base"),
+    rows = [("无条件基准率（不看任何信号）", base["G2"]["p"], base["G2"]["ci"], base["G2"]["n"], "base"),
             ("C1 回撤首次≤−40%", conds["C1"]["grids"]["G2"]["p_post"],
              conds["C1"]["grids"]["G2"]["cr"], conds["C1"]["grids"]["G2"]["n"], "cond"),
             ("C2 连跌≥4周＋60日≤−20%", conds["C2"]["grids"]["G2"]["p_post"],
@@ -321,20 +322,20 @@ footer{border-top:1px solid RU;padding:28px 0 56px;font-size:12.5px;color:MU;lin
     <div><b>{cur['t0_close']:,.2f}</b>基准收盘（{cur['t0_date']}）</div>
     <div><b>−{abs(cur['dd_all'])*100:.1f}%</b>距历史高点</div>
     <div><b>{cur['streak_completed']}</b>完整下跌周</div>
-    <div><b>3,983</b>交易日样本</div>
+    <div><b>3,984</b>交易日样本</div>
   </div>
 </header>
 
 <section id="s1">
 <h2><span class="num">0 1</span>现在的位置：历史第三深</h2>
-<p class="lead">先把口径校准。你在昨天那份方案里看到的"连跌 6 周"包含了本周尚未收盘的点位；严格按完整周计算，截至 10-29 收盘是 <b>5 个完整下跌周、累计 −20.42%</b>，含本周至今则为 6 周、−25.35%。这个区别在条件匹配里很重要，因为未完成的周带着未来信息。</p>
+<p class="lead">先把口径校准。截至 10-30 收盘（周五已收），创业板指已连续 <b>6 个完整下跌周、累计 −28.44%</b>，距 6 月高点回撤 <b>−44.79%</b>。上一版报告写"5 个完整周"，是因为当时本周尚未收盘；现在这一周已经走完，条件匹配的口径也随之确定。</p>
 <div class="kpi">
   <div><div class="v r">−{abs(cur['dd_all'])*100:.1f}%</div><div class="l">距历史高点 4,371.99（2026-06-25），16 年第三深</div></div>
-  <div><div class="v r">{cur['streak_completed']}</div><div class="l">完整下跌周数（第 6 周待今日收盘确认）</div></div>
-  <div><div class="v r">{pct(cur['ret20'],1,True)}</div><div class="l">近 20 日，历史第 0.6 百分位</div></div>
-  <div><div class="v t">{cur['vol20']*100:.0f}%</div><div class="l">20 日年化波动率，历史第 83 百分位</div></div>
+  <div><div class="v r">{cur['streak_completed']}</div><div class="l">连续下跌周数（10-30 收盘确认）</div></div>
+  <div><div class="v r">{pct(cur['ret20'],1,True)}</div><div class="l">近 20 日，历史第 0.5 百分位</div></div>
+  <div><div class="v t">{cur['vol20']*100:.0f}%</div><div class="l">20 日年化波动率，历史第 84 百分位</div></div>
 </div>
-<p>把它放回 16 年：这个回撤排第三深，前面只有 2015-06→2018-10（−69.7%）和 2010-12→2012-12（−51.9%）。按摆动点规则拆出来的 9 段熊市里，<b>当前的下跌速度（−10.1%/月）显著快于任何一段慢熊（−1.6 至 −7.3%/月），但慢于 2015 年 6–7 月的崩塌（−35.6%/月）</b>。</p>
+<p>把它放回 16 年：这个回撤排第三深，前面只有 2015-06→2018-10（−69.7%）和 2010-12→2012-12（−51.9%）。按摆动点规则拆出来的 9 段熊市里，<b>当前的下跌速度（−10.5%/月）显著快于任何一段慢熊（−1.6 至 −7.3%/月），但慢于 2015 年 6–7 月的崩塌（−35.6%/月）</b>。</p>
 </section>
 
 <hr class="sec">
@@ -344,7 +345,7 @@ footer{border-top:1px solid RU;padding:28px 0 56px;font-size:12.5px;color:MU;lin
 <table>
 <thead><tr><th>口径</th><th class="num">样本</th><th class="num">原始命中</th><th class="num">收缩后概率</th><th class="num">90% 可信区间</th><th class="num">相对基准</th></tr></thead>
 <tbody>
-<tr><td>无条件基准率（什么都不看）</td><td class="num">3,963</td><td class="num">42.2%</td><td class="num">42.2%</td><td class="num">40.7–43.8%</td><td class="num">—</td></tr>
+<tr><td>无条件基准率（什么都不看）</td><td class="num">3,964</td><td class="num">42.2%</td><td class="num">42.2%</td><td class="num">40.7–43.7%</td><td class="num">—</td></tr>
 <tr class="hi"><td><b>C1 回撤首次 ≤−40%</b>（最贴近当前形态）</td><td class="num">4</td><td class="num">3/4 = 75.0%</td><td class="num"><b>49.1%</b></td><td class="num">30.7–67.6%</td><td class="num pos">+6.9pp</td></tr>
 <tr><td>C2 连跌≥4周 且 60日≤−20%</td><td class="num">3</td><td class="num">3/3 = 100%</td><td class="num">51.8%</td><td class="num">32.8–70.6%</td><td class="num pos">+9.6pp</td></tr>
 <tr><td>C3 60日≤−25%</td><td class="num">5</td><td class="num">3/5 = 60.0%</td><td class="num">46.7%</td><td class="num">28.9–64.8%</td><td class="num pos">+4.4pp</td></tr>
@@ -402,8 +403,8 @@ footer{border-top:1px solid RU;padding:28px 0 56px;font-size:12.5px;color:MU;lin
 
 <p><b>同构性结论有三条，都指向"不能简单类比"：</b></p>
 <ol class="steps">
-<li><div class="t">速度是历史均值的三到六倍</div><div class="d">当前段 −10.1%/月。慢熊（2016–2018、2022–2024）是 −1.6 至 −2.4%/月，2015 年 6–7 月是 −35.6%/月。你这段既不是阴跌，也不是断崖，是一种历史上只出现过一两次的中等斜率崩塌。</div></li>
-<li><div class="t">波动率处于高位而非底部</div><div class="d">当前段年化波动 43.1%，接近 2015 年的 51%–69%，远高于 2018、2022、2024 那几段慢熊的 20%–26%。<b>底部通常伴随波动率衰减</b>；现在还没有这个特征。</div></li>
+<li><div class="t">速度是历史均值的三到六倍</div><div class="d">当前段 −10.5%/月。慢熊（2016–2018、2022–2024）是 −1.6 至 −2.4%/月，2015 年 6–7 月是 −35.6%/月。你这段既不是阴跌，也不是断崖，是一种历史上只出现过一两次的中等斜率崩塌。</div></li>
+<li><div class="t">波动率处于高位而非底部</div><div class="d">当前段年化波动 43.3%，接近 2015 年的 51%–69%，远高于 2018、2022、2024 那几段慢熊的 20%–26%。<b>底部通常伴随波动率衰减</b>；现在还没有这个特征。</div></li>
 <li><div class="t">量能已在萎缩，但幅度中和</div><div class="d">当前段末 60 日均量 / 峰值前 60 日均量 = 0.81x。历史上 0.77x–0.80x 的那几次（2010、2015-11、2016）后续都还有下跌，1.1–1.3x 的反而见过快速反弹。<b>缩量在这里不是见底信号。</b></div></li>
 </ol>
 <p>形态向量最近的三段是：{sim_txt}。注意这份"相似"只基于深度、历时、波动、量能四个价格维度，<b>不含宏观驱动</b>——而驱动恰恰决定后续分布，这部分按约定留给完整版。</p>
@@ -460,7 +461,7 @@ footer{border-top:1px solid RU;padding:28px 0 56px;font-size:12.5px;color:MU;lin
 <li><b>样本量是硬伤。</b>C1 只有 4 个样本，C2 只有 3 个。任何区间都宽到无法支撑精确判断，这不是方法问题，是历史只发生了这么多次。</li>
 <li><b>没有做多重比较矫正。</b>5 个条件 × 4 个网格 = 20 个检验，纯随机也会出现约 1 个"显著"。所以我没有单独挑出任何一个"显著"结果做结论，全部按收缩后的值报。</li>
 <li><b>同构性只做了价格形态。</b>不含宏观、流动性、估值分位。这是与你有约在先的取舍，也是最可能改变结论的一块。</li>
-<li><b>基准日取 10-29 收盘。</b>今日（10-30）收盘后数字会小幅变化，同一脚本重跑即可，参数不变。</li>
+<li><b>基准日取 10-30 收盘</b>（数据最新交易日）。行情变化后重跑同一脚本即可，参数不变。</li>
 <li><b>不含分红、费用、冲击成本。</b>指数收益与你的实际持仓收益之间有摩擦。</li>
 </ul>
 </section>
@@ -468,15 +469,15 @@ footer{border-top:1px solid RU;padding:28px 0 56px;font-size:12.5px;color:MU;lin
 <hr class="sec">
 <section id="s8">
 <h2><span class="num">0 8</span>方法与声明</h2>
-<p><b>数据</b>：创业板指（399006）日收盘价，2010-06-02 至 2026-10-29，共 3,983 个交易日。腾讯财经 ifzq 接口取原始数据，新浪财经在 1,023 个重叠交易日上逐日比对，收盘价差异 >0.05 元的天数为 0。</p>
+<p><b>数据</b>：创业板指（399006）日收盘价，2010-06-02 至 2026-10-30，共 3,984 个交易日。腾讯财经 ifzq 接口取原始数据，新浪财经在 1,023 个重叠交易日上逐日比对，收盘价差异 >0.05 元的天数为 0。</p>
 <p><b>方法</b>：事件研究 + Wilson 区间 + Beta 先验贝叶斯收缩（n₀=15）+ 摆动点熊市段识别（30%/20%）+ 等权 z 分数形态距离。全部参数在执行前写入《预注册清单_2026-10-30.md》。脚本可复现：<code>scripts/analyze.py</code>。完整概率矩阵见 <code>out/probability_table.csv</code>。</p>
 <p><b>核心局限再强调一次</b>：4 个样本推不出精确概率。这份报告的价值不在于那个 49%，而在于它把"能弹"和"见底"分开、把"五五开"和"确定"分开、并明确告诉你哪些结论在样本外会失效。</p>
 <p><b>声明</b>：本文为历史统计研究，<b>不构成投资建议</b>，不预示未来收益。历史基准率不保证重现，极端行情下统计规律可能整体失效。据此操作，风险自担。</p>
 </section>
 
 <footer>
-<p>数据截止 2026-10-29 收盘 · 生成于 {R['meta']['generated']} · 单文件离线文档，图表为内联 SVG</p>
-<p>样本 3,983 交易日 · 条件冷却期 60 交易日 · 先验强度 n₀=15 · 主口径 H=20 日 / Y=5%</p>
+<p>数据截止 2026-10-30 收盘 · 生成于 {R['meta']['generated']} · 单文件离线文档，图表为内联 SVG</p>
+<p>样本 3,984 交易日 · 条件冷却期 60 交易日 · 先验强度 n₀=15 · 主口径 H=20 日 / Y=5%</p>
 </footer>
 
 </main></div>
