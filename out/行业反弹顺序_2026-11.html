@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>历次熊底后的行业反弹顺序 · 2026-11</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f7f5f1;color:#17181a;
+ font:16px/1.75 -apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ -webkit-font-smoothing:antialiased}
+.wrap{max-width:980px;margin:0 auto;padding:56px 32px 100px}
+.kicker{font-size:12px;letter-spacing:.2em;color:#b4462f;margin-bottom:18px}
+h1{font-size:clamp(28px,4vw,42px);line-height:1.22;margin:0 0 18px;letter-spacing:-.02em}
+.sub{font-size:18px;color:#4a453f;line-height:1.72;max-width:42em;margin:0 0 26px}
+.meta{display:flex;flex-wrap:wrap;gap:26px;font-size:13px;color:#6f6a61;
+ border-top:1px solid #d9d4cb;border-bottom:1px solid #d9d4cb;padding:14px 0;margin-bottom:8px}
+.meta b{color:#17181a;font-weight:600;display:block;font-size:15px}
+h2{font-size:22px;margin:56px 0 6px;font-weight:700}
+h2 .num{font-size:12px;letter-spacing:.16em;color:#b4462f;display:block;margin-bottom:7px;font-weight:600}
+p{margin:13px 0}
+.note{background:rgba(11,110,110,.055);border:1px solid rgba(11,110,110,.18);padding:16px 20px;margin:22px 0;font-size:15px}
+.note .h{font-size:11px;letter-spacing:.16em;color:#0b6e6e;margin-bottom:7px;font-weight:600}
+.warn{background:rgba(166,124,31,.07);border:1px solid rgba(166,124,31,.25);padding:16px 20px;margin:22px 0;font-size:15px}
+.warn .h{font-size:11px;letter-spacing:.16em;color:#7d5c14;margin-bottom:7px;font-weight:600}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;color:#6f6a61;font-weight:600;
+ border-bottom:1.5px solid #c9c3b9;padding:8px 6px;white-space:nowrap}
+th:not(:first-child){text-align:center}
+td{padding:6px;border-bottom:1px solid #e6e1d8;font-variant-numeric:tabular-nums}
+td.nm{font-weight:600;white-space:nowrap}
+td.num{text-align:right;white-space:nowrap}
+table.hm td:not(.nm):not(.avg):not(.sd):not(.tag-s):not(.tag-r):not(.tag-m){
+ text-align:center;width:58px;font-weight:600;color:#17181a}
+table.hm td.avg,table.hm td.sd{text-align:center;color:#6f6a61;width:56px}
+.r1{background:rgba(11,110,110,.80);color:#fff!important}
+.r2{background:rgba(11,110,110,.58);color:#fff!important}
+.r3{background:rgba(11,110,110,.34);color:#17181a!important}
+.r4,.r5,.r6,.r7{background:rgba(23,24,26,.05);color:#17181a!important}
+.r8{background:rgba(180,70,47,.16);color:#17181a!important}
+.r9{background:rgba(180,70,47,.32);color:#17181a!important}
+.r10{background:rgba(180,70,47,.50);color:#fff!important}
+.tag-s{color:#0b6e6e;text-align:center;font-size:12px}
+.tag-m{color:#6f6a61;text-align:center;font-size:12px}
+.tag-r{color:#b4462f;text-align:center;font-size:12px}
+.neg{color:#b4462f} .pos{color:#0b6e6e}
+tr.new td{background:rgba(166,124,31,.07)}
+figcaption,.cap{font-size:12.5px;color:#6f6a61;margin:2px 0 24px}
+ul.tight{margin:10px 0;padding-left:20px}
+ul.tight li{margin:8px 0}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:18px 0}
+ol.steps>li{counter-increment:s;position:relative;padding:12px 0 12px 42px;border-bottom:1px solid #e6e1d8}
+ol.steps>li::before{content:counter(s);position:absolute;left:0;top:12px;width:24px;height:24px;
+ border:1px solid #0b6e6e;color:#0b6e6e;border-radius:50%;display:flex;align-items:center;
+ justify-content:center;font-size:12px;font-weight:600}
+footer{border-top:1px solid #d9d4cb;margin-top:56px;padding-top:20px;font-size:12.5px;color:#6f6a61;line-height:1.7}
+@media (max-width:760px){
+ .wrap{padding:36px 18px 70px}
+ table{font-size:12px} th,td{padding:4px 3px}
+ table.hm td:not(.nm){
+   width:auto}
+}
+@media print{
+ body{background:#fff;font-size:10pt}
+ h2{page-break-after:avoid}
+ table,.note,.warn{page-break-inside:avoid}
+ @page{size:A4;margin:14mm}
+}
+</style></head>
+<body><div class="wrap">
+
+<div class="kicker">历 史 统 计 · 不 构 成 投 资 建 议</div>
+<h1>熊底之后，谁先反弹？</h1>
+<p class="sub">创业板指 6 次熊底之后，10 个中证一级行业的 20 日涨幅排名。<b>结论是：两端稳定，中间随主线轮动。</b>没有一条固定的"操作顺序"。</p>
+<div class="meta">
+  <div><b>6</b>次熊底</div>
+  <div><b>10</b>个行业指数</div>
+  <div><b>2015-07 → 2024-02</b>样本区间</div>
+  <div><b>2012-06-01 → 2026-11-02</b>数据区间</div>
+</div>
+
+<h2><span class="num">0 1</span>先看结论</h2>
+<ol class="steps">
+<li><div><b>稳定的只有两端。</b>信息（平均第 3）、工业（第 3）长期靠前；<b>金融（第 9.2）稳定垫底</b>。中间 6 个行业的位置由当期主线决定。</div></li>
+<li><div><b>"抄底先买券商"在这份数据里站不住。</b>金融行业指数六次里四次排最后，两次在 120 日内都没涨到 +10%。（注：全指金融里银行占大头，不能完全代表券商。）</div></li>
+<li><div><b>顺序随市场结构变化。</b>2015–2018 与 2022–2024 两个时代的排序相关系数只有 <b>0.36</b>，而同代内部是 0.47 / 0.48。能源从第 9 升到第 4，材料升 3 位——那是商品周期的功劳，不是"规律"。</div></li>
+</ol>
+
+<h2><span class="num">0 2</span>热力图：谁强谁弱，一眼可见</h2>
+<table class="hm">
+<thead><tr><th>行业</th><th>15-07-07</th><th>15-09-15</th><th>16-02-29</th><th>18-10-18</th><th>22-04-26</th><th>24-02-02</th><th>平均</th><th>标准差</th><th>性质</th></tr></thead>
+<tbody><tr><td class="nm">通信</td><td class="r1">1</td><td class="r2">2</td><td class="r5">5</td><td class="r1">1</td><td class="r6">6</td><td class="r2">2</td><td class="avg">2.8</td><td class="sd">2.1</td><td class="tag-m">半稳定</td></tr><tr><td class="nm">工业</td><td class="r2">2</td><td class="r3">3</td><td class="r3">3</td><td class="r3">3</td><td class="r2">2</td><td class="r5">5</td><td class="avg">3.0</td><td class="sd">1.1</td><td class="tag-s">稳定</td></tr><tr><td class="nm">信息</td><td class="r8">8</td><td class="r1">1</td><td class="r1">1</td><td class="r2">2</td><td class="r5">5</td><td class="r1">1</td><td class="avg">3.0</td><td class="sd">2.9</td><td class="tag-r">轮动</td></tr><tr><td class="nm">可选消费</td><td class="r7">7</td><td class="r4">4</td><td class="r2">2</td><td class="r8">8</td><td class="r4">4</td><td class="r4">4</td><td class="avg">4.8</td><td class="sd">2.2</td><td class="tag-r">轮动</td></tr><tr><td class="nm">材料</td><td class="r6">6</td><td class="r5">5</td><td class="r6">6</td><td class="r7">7</td><td class="r3">3</td><td class="r3">3</td><td class="avg">5.0</td><td class="sd">1.7</td><td class="tag-m">半稳定</td></tr><tr><td class="nm">医药</td><td class="r3">3</td><td class="r6">6</td><td class="r7">7</td><td class="r4">4</td><td class="r8">8</td><td class="r6">6</td><td class="avg">5.7</td><td class="sd">1.9</td><td class="tag-m">半稳定</td></tr><tr><td class="nm">公用事业</td><td class="r4">4</td><td class="r9">9</td><td class="r8">8</td><td class="r5">5</td><td class="r7">7</td><td class="r9">9</td><td class="avg">7.0</td><td class="sd">2.1</td><td class="tag-m">半稳定</td></tr><tr><td class="nm">主要消费</td><td class="r5">5</td><td class="r7">7</td><td class="r4">4</td><td class="r10">10</td><td class="r9">9</td><td class="r8">8</td><td class="avg">7.2</td><td class="sd">2.3</td><td class="tag-r">轮动</td></tr><tr><td class="nm">能源</td><td class="r9">9</td><td class="r8">8</td><td class="r10">10</td><td class="r9">9</td><td class="r1">1</td><td class="r7">7</td><td class="avg">7.3</td><td class="sd">3.3</td><td class="tag-r">轮动</td></tr><tr><td class="nm">金融</td><td class="r10">10</td><td class="r10">10</td><td class="r9">9</td><td class="r6">6</td><td class="r10">10</td><td class="r10">10</td><td class="avg">9.2</td><td class="sd">1.6</td><td class="tag-s">稳定</td></tr></tbody></table>
+<p class="cap">单元格内为按 20 日涨幅的排名（1 = 最强，10 = 最弱）。绿色系 = 前三，红色系 = 后三。<b>标准差小</b>说明该行业的名次稳定，<b>大</b>说明随行情变化。</p>
+
+<div class="note">
+<div class="h">怎 么 读</div>
+工业的标准差只有 1.1、金融 1.6——这两头的名次几乎可以预期。而信息的标准差 2.9：它在 2015-07 排第 8，在之后五次里四次进前二。<b>均值掩盖了它的跳跃性</b>，只看"平均排名"会误判。
+</div>
+
+<h2><span class="num">0 3</span>两个时代：顺序不是常量</h2>
+<table>
+<thead><tr><th>行业</th><th class="num">2015–2018 平均</th><th class="num">2022–2024 平均</th><th class="num">变化</th></tr></thead>
+<tbody><tr><td class="nm">通信</td><td class="num">2.2</td><td class="num">4.0</td><td class="num neg">+1.8</td></tr><tr><td class="nm">工业</td><td class="num">2.8</td><td class="num">3.5</td><td class="num ">+0.8</td></tr><tr><td class="nm">信息</td><td class="num">3.0</td><td class="num">3.0</td><td class="num ">+0.0</td></tr><tr><td class="nm">可选消费</td><td class="num">5.2</td><td class="num">4.0</td><td class="num ">-1.2</td></tr><tr><td class="nm">材料</td><td class="num">6.0</td><td class="num">3.0</td><td class="num pos">-3.0</td></tr><tr><td class="nm">医药</td><td class="num">5.0</td><td class="num">7.0</td><td class="num neg">+2.0</td></tr><tr><td class="nm">公用事业</td><td class="num">6.5</td><td class="num">8.0</td><td class="num ">+1.5</td></tr><tr><td class="nm">主要消费</td><td class="num">6.5</td><td class="num">8.5</td><td class="num neg">+2.0</td></tr><tr><td class="nm">能源</td><td class="num">9.0</td><td class="num">4.0</td><td class="num pos">-5.0</td></tr><tr><td class="nm">金融</td><td class="num">8.8</td><td class="num">10.0</td><td class="num ">+1.2</td></tr></tbody></table>
+<p class="cap">负值 = 在新时期名次上升（更强）；正值 = 名次下降。能源 −5.0、材料 −3.0 是最大的两处位移，对应 2021–22 年商品周期。</p>
+
+<h2><span class="num">0 4</span>加上科创板与双创</h2>
+<p>科创板 2019 年才开市，只有 2022-04 和 2024-02 两个熊底可对照。把新板块放进同一张排序表：</p>
+<table>
+<thead><tr><th>标的</th><th class="num">2022-04-26</th><th class="num">2024-02-02</th></tr></thead>
+<tbody><tr class=""><td class="nm">能源</td><td class="num">1</td><td class="num">13</td></tr><tr class=""><td class="nm">材料</td><td class="num">3</td><td class="num">9</td></tr><tr class=""><td class="nm">工业</td><td class="num">2</td><td class="num">11</td></tr><tr class=""><td class="nm">可选消费</td><td class="num">7</td><td class="num">10</td></tr><tr class=""><td class="nm">主要消费</td><td class="num">15</td><td class="num">14</td></tr><tr class=""><td class="nm">医药</td><td class="num">14</td><td class="num">12</td></tr><tr class=""><td class="nm">金融</td><td class="num">16</td><td class="num">16</td></tr><tr class=""><td class="nm">信息</td><td class="num">8</td><td class="num">1</td></tr><tr class=""><td class="nm">通信</td><td class="num">9</td><td class="num">4</td></tr><tr class=""><td class="nm">公用事业</td><td class="num">10</td><td class="num">15</td></tr><tr class="new"><td class="nm">科创50</td><td class="num">5</td><td class="num">7</td></tr><tr class="new"><td class="nm">科创50ETF</td><td class="num">6</td><td class="num">8</td></tr><tr class="new"><td class="nm">双创ETF</td><td class="num">12</td><td class="num">6</td></tr><tr class="new"><td class="nm">创业板50ETF</td><td class="num">13</td><td class="num">5</td></tr><tr class="new"><td class="nm">芯片ETF</td><td class="num">4</td><td class="num">3</td></tr><tr class="new"><td class="nm">中证TMT</td><td class="num">11</td><td class="num">2</td></tr></tbody></table>
+<p class="cap">带底色的行为新增的科创板/双创标的。两次差异极大：2022 年科技内部严重分化（芯片第 4、科创50 第 5，但双创与创业板50 掉到第 12–13）；2024 年科技全线包揽前八。</p>
+
+<div class="warn">
+<div class="h">新 板 块 是 放 大 器，不 是 导 航 仪</div>
+2024-02 底部之后，科创50 前 5 日 +13.4%（快于创业板指 +12.6%），但 60 日只有 +13.4%，而创业板指是 +20.0%。<b>它放大当期主线的涨幅，不决定顺序。</b>押"顺序"不如押"主线"。
+</div>
+
+<h2><span class="num">0 5</span>局限：这份分析能支撑什么</h2>
+<ul class="tight">
+<li><b>只有 6 个熊底。</b>2015 年占了其中两个（7 月 7 日、9 月 15 日），独立事件实际只有 5 个左右。任何"规律"都应视为倾向而非规律。</li>
+<li><b>排序相关性 0.36（跨时代）</b>低于常用的 0.5 门槛。样本内一致性尚可，外推能力有限。</li>
+<li><b>金融 ≠ 券商。</b>中证全指金融由银行主导，"券商先动"的传说需要单独用券商 ETF 验证（512880 自 2016 年起，只覆盖 3 个底部）。</li>
+<li><b>只看 20 日。</b>换成 60 日或 120 日，排序会变——短期反弹的领跑者未必是中期赢家。</li>
+<li><b>底部由规则定义</b>（创业板跌 30% / 反弹 20%），换阈值底部日期会变，结论可能随之变化。</li>
+</ul>
+
+<div class="note">
+<div class="h">对 实 际 操 作 的 含 义</div>
+先判断当期主线是什么，再选板块：主线是 AI/半导体，科创50、芯片靠前（如 2024）；主线是资源/实物资产，能源、材料靠前（如 2022）。<b>"按固定顺序操作"没有数据支持。</b>
+</div>
+
+<footer>
+<p><b>数据</b>：中证全指一级行业指数（000986–000995）10 个；科创50（000688）、科创50ETF（588000）、双创ETF（159781）、创业板50ETF（159949）、芯片ETF（512760）、中证TMT（000998）；基准为创业板指（399006）。行情经腾讯 ifzq 接口取得，前复权。</p>
+<p><b>口径</b>：熊底 = 创业板指自峰值下跌 ≥30% 进入熊市段、自低点反弹 ≥20% 结束，取该段最低收盘日；收益 = 底部收盘至第 20 个交易日收盘。</p>
+<p><b>声明</b>：历史统计，不构成投资建议。样本量极小，排序结果可能由随机性主导。</p>
+</footer>
+</div></body></html>
