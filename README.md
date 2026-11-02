@@ -85,7 +85,8 @@ python scripts/build_share_card.py
 ```
 
 辅助脚本：`recon.py`（跌幅与样本量侦察）、`check_drawdowns.py`（回撤排名核对）、
-`diagnose_c5.py`（C5 无先例的边界诊断）、`near_neighbors.py`（最近邻时点前瞻）。
+`diagnose_c5.py`（C5 无先例的边界诊断）、`near_neighbors.py`（最近邻时点前瞻）、
+`check_table_align.py`（表头/单元格对齐自检，改过 CSS 后跑一次）。
 
 ---
 

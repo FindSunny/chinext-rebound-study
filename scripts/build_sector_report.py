@@ -91,11 +91,11 @@ def cell_class(r):
 
 rows_hm = ""
 for nm in avg.index:
-    cells = "".join('<td class="%s">%d</td>' % (cell_class(rt.loc[nm, c]), rt.loc[nm, c]) for c in rt.columns)
+    cells = "".join('<td class="ctr %s">%d</td>' % (cell_class(rt.loc[nm, c]), rt.loc[nm, c]) for c in rt.columns)
     tag = "稳定" if sd[nm] <= 1.65 else ("轮动" if sd[nm] >= 2.2 else "半稳定")
     cls = "tag-s" if tag == "稳定" else ("tag-r" if tag == "轮动" else "tag-m")
-    rows_hm += ('<tr><td class="nm">%s</td>%s<td class="avg">%.1f</td>'
-                '<td class="sd">%.1f</td><td class="%s">%s</td></tr>'
+    rows_hm += ('<tr><td class="nm">%s</td>%s<td class="ctr">%.1f</td>'
+                '<td class="ctr">%.1f</td><td class="ctr %s">%s</td></tr>'
                 % (nm, cells, avg[nm], sd[nm], cls, tag))
 
 rows_era = ""
@@ -114,7 +114,7 @@ for nm in SECTORS + NEWB:
                  % (star.strip(), nm, "%d" % a if not np.isnan(a) else "—",
                     "%d" % b if not np.isnan(b) else "—"))
 
-collist = "".join("<th>%s</th>" % c[2:] for c in rt.columns)
+collist = "".join('<th class="ctr">%s</th>' % c[2:] for c in rt.columns)
 nbot = len(rt.columns)
 
 html = f"""<!DOCTYPE html>
@@ -141,15 +141,16 @@ p{{margin:13px 0}}
 .warn{{background:rgba(166,124,31,.07);border:1px solid rgba(166,124,31,.25);padding:16px 20px;margin:22px 0;font-size:15px}}
 .warn .h{{font-size:11px;letter-spacing:.16em;color:#7d5c14;margin-bottom:7px;font-weight:600}}
 table{{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}}
+/* 对齐只由类名决定：.num=右、.ctr=中、无类=左。
+   不要再写 th:not(:first-child) 这类隐式规则，否则会覆盖 th.num。 */
 th{{text-align:left;font-size:11.5px;letter-spacing:.06em;color:{MUTED};font-weight:600;
  border-bottom:1.5px solid #c9c3b9;padding:8px 6px;white-space:nowrap}}
-th:not(:first-child){{text-align:center}}
 td{{padding:6px;border-bottom:1px solid #e6e1d8;font-variant-numeric:tabular-nums}}
 td.nm{{font-weight:600;white-space:nowrap}}
-td.num{{text-align:right;white-space:nowrap}}
-table.hm td:not(.nm):not(.avg):not(.sd):not(.tag-s):not(.tag-r):not(.tag-m){{
- text-align:center;width:58px;font-weight:600;color:{INK}}}
-table.hm td.avg,table.hm td.sd{{text-align:center;color:{MUTED};width:56px}}
+.num{{text-align:right;white-space:nowrap}}
+.ctr{{text-align:center}}
+table.hm .ctr{{width:58px}}
+table.hm td.ctr{{font-weight:600}}
 .r1{{background:rgba(11,110,110,.80);color:#fff!important}}
 .r2{{background:rgba(11,110,110,.58);color:#fff!important}}
 .r3{{background:rgba(11,110,110,.34);color:{INK}!important}}
@@ -205,7 +206,7 @@ footer{{border-top:1px solid {RULE};margin-top:56px;padding-top:20px;font-size:1
 
 <h2><span class="num">0 2</span>热力图：谁强谁弱，一眼可见</h2>
 <table class="hm">
-<thead><tr><th>行业</th>{collist}<th>平均</th><th>标准差</th><th>性质</th></tr></thead>
+<thead><tr><th>行业</th>{collist}<th class="ctr">平均</th><th class="ctr">标准差</th><th class="ctr">性质</th></tr></thead>
 <tbody>{rows_hm}</tbody></table>
 <p class="cap">单元格内为按 20 日涨幅的排名（1 = 最强，10 = 最弱）。绿色系 = 前三，红色系 = 后三。<b>标准差小</b>说明该行业的名次稳定，<b>大</b>说明随行情变化。</p>
 
